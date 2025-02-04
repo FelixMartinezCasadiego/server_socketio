@@ -8,7 +8,12 @@ class Sockets {
   socketsEvents() {
     // On connection
     this.io.on("connection", (socket) => {
-      // Recibe message from the message
+      console.log("New client connected");
+
+      // Emit welcome message to the connected client
+      socket.emit("welcome-message", "Welcome to the server!");
+
+      // Get message from client
       socket.on("message-to-server", (data) => {
         console.log(data);
 
